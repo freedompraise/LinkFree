@@ -1,4 +1,5 @@
-import { CalendarIcon } from "@heroicons/react/20/solid";
+import CalendarIcon from "@heroicons/react/20/solid/CalendarIcon";
+import { classNames } from "@services/utils/classNames";
 
 import Page from "@components/Page";
 import PageHead from "@components/PageHead";
@@ -9,6 +10,55 @@ export default function Changelog() {
     removal: "text-red-800 bg-red-100",
   };
   const changes = [
+    {
+      title: "Links animation",
+      description:
+        "Have your links stand out even further with a subtle animation",
+      type: "addition",
+      date: "2023-08-19",
+    },
+    {
+      title: "Discover Profile",
+      description:
+        "Discover recently created/updated profiles - this is great to encourage people to update their Profiles",
+      type: "addition",
+      date: "2023-08-11",
+    },
+    {
+      title: "GitHub Repos showcase",
+      description:
+        "Now you can add repos to your Profile and they also appear in the global repos page",
+      type: "addition",
+      date: "2023-08-01",
+    },
+    {
+      title: "Share profile on social media",
+      description:
+        "With the QR code, there is also a link copy and social share buttons",
+      type: "addition",
+      date: "2023-07-10",
+    },
+    {
+      title: "Reorder testimonials and links",
+      description:
+        "As these items don't have lists you may want to reorder them",
+      type: "addition",
+      date: "2023-07-06",
+    },
+    {
+      title: "Manage profile with forms",
+      description:
+        "We now have functionality to manage your profile with forms",
+      type: "addition",
+      date: "2023-06-14",
+    },
+    {
+      title: "Custom login page",
+      description:
+        "We were using the standard Next-Auth page but now we have a branded login page",
+      type: "addition",
+      date: "2023-05-04",
+    },
     {
       title: "LinkFree now has DarkMode",
       description:
@@ -72,7 +122,7 @@ export default function Changelog() {
     },
     {
       title: "`avatar` json property no longer required",
-      description: "Now will default to using people's GitHub proile picture",
+      description: "Now will default to using people's GitHub profile picture",
       type: "removal",
       date: "2023-01-07",
     },
@@ -81,13 +131,13 @@ export default function Changelog() {
   return (
     <>
       <PageHead
-        title="LinkFree Search Users"
-        description="Search LinkFree user directory by name, tags, skills, languages"
+        title="LinkFree user changelog"
+        description="What are the latest features and changes to LinkFree"
       />
       <Page>
         <h1 className="text-4xl mb-4 font-bold">Changelog</h1>
 
-        <div className="overflow-hidden bg-white dark:bg-primary-high dark:border dark:border-primary-medium shadow sm:rounded-md">
+        <div className="overflow-hidden bg-primary-low shadow dark:bg-primary-medium dark:border dark:border-primary-low sm:rounded-md">
           <ul role="list" className="divide-y divide-primary-low">
             {changes.map((change) => (
               <li key={change.title}>
@@ -98,26 +148,25 @@ export default function Changelog() {
                     </p>
                     <div className="ml-2 flex flex-shrink-0">
                       <p
-                        className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${
-                          colors[change.type]
-                        }`}
+                        className={classNames(
+                          colors[change.type],
+                          "inline-flex rounded-full px-2 text-xs font-semibold leading-5"
+                        )}
                       >
                         {change.type}
                       </p>
                     </div>
                   </div>
                   <div className="mt-2 sm:flex sm:justify-between">
-                    <div className="sm:flex dark:text-primary-low-medium">
+                    <div className="sm:flex dark:text-primary-low">
                       {change.description}
                     </div>
                     <div className="mt-2 flex items-center text-sm text-primary-medium sm:mt-0">
                       <CalendarIcon
-                        className="mr-1.5 h-5 w-5 flex-shrink-0 text-primary-low-medium dark:text-primary-low"
+                        className="mr-1.5 h-5 w-5 flex-shrink-0 text-primary-medium-low dark:text-primary-low"
                         aria-hidden="true"
                       />
-                      <p className="dark:text-primary-low-medium">
-                        {change.date}
-                      </p>
+                      <p className="dark:text-primary-low">{change.date}</p>
                     </div>
                   </div>
                 </div>

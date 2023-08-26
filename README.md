@@ -1,8 +1,8 @@
-[![Open in GitPod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/EddieHubCommunity/LinkFree) ![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FEddieHubCommunity%2Fmonitoring%2Fmaster%2Fapi%2Flink-free%2Fuptime.json) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/EddieHubCommunity/LinkFree)](https://github.com/EddieHubCommunity/LinkFree/releases) ![GitHub repo size](https://img.shields.io/github/repo-size/EddieHubCommunity/LinkFree)
+[![Open in GitPod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/EddieHubCommunity/LinkFree) ![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FEddieHubCommunity%2Fmonitoring%2Fmaster%2Fapi%2Flink-free-linkfree-io%2Fuptime.json) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/EddieHubCommunity/LinkFree)](https://github.com/EddieHubCommunity/LinkFree/releases) ![GitHub repo size](https://img.shields.io/github/repo-size/EddieHubCommunity/LinkFree)
 
 # What is LinkFree?
 
-LinkFree is the Open Source alternative to LinkTree. A platform where people in tech can have a single hub to showcase their content in order to accelerate their career, whilst contributing to an Open Source project and being part of a community that has a say in where the project is going.
+A platform where people in tech can have a single hub to showcase their content in order to accelerate their career, whilst contributing to an Open Source project and being part of a community that has a say in where the project is going.
 
 Your profile will have links to your social media and content. You can also add your timeline, testimonials, and upcoming events that you are participating in.
 
@@ -12,14 +12,13 @@ Here is an example of a LinkFree Profile https://linkfree.io/eddiejaoude
 
 ## Tech Stack
 
-LinkFree was built using the following technologies:
+LinkFree is built using the following technologies:
 
 - [Next.js](https://nextjs.org/) - a framework for building server-rendered React applications
 - [MongoDB](https://www.mongodb.com/) - a NoSQL database
 - [Tailwind CSS](https://tailwindcss.com/) - a utility-first CSS framework      
- 
 
-## 🛠️ Quickstart
+## Quickstart
 
 You have 4 options to contribute to the repo, please pick your favourite from:
 
@@ -30,11 +29,16 @@ You have 4 options to contribute to the repo, please pick your favourite from:
 
 Brief documentation is below, but full documentation can be found here https://linkfree.io/docs
 
+> **Warning**:
+> Your DB will be empty, you will need to load the data into the database! You can do this by visiting the url `/api/system/reload?secret=development`
+
 ### GitHub UI
 
 This is great if you only want to add your Profile or make changes to it.
 
-Here is the **QuickStart** guide to add your profile - https://linkfree.io/docs/quickstart
+Here is the **QuickStart** guide to add your profile
+- With JSON https://linkfree.io/docs/quickstart-json
+- With Forms https://linkfree.io/docs/quickstart-forms
 
 > **Note**: give extra attention to JSON formatting and the GitHub Action after you create the Pull Request
 
@@ -56,9 +60,9 @@ This environment is fully on your computer and requires each dependency (for exa
 
 Before contributing or adding a new feature, please make sure you have already installed the following tools:
 
-- [NodeJs](https://nodejs.org/en/download/) (Works with Node LTS version v16.17.0)
+- [NodeJs](https://nodejs.org/en/download/) (Works with Node LTS version v18.16.1)
 - [MongoDB](https://www.mongodb.com/home)
-- Optional [NVM](https://github.com/nvm-sh/nvm): Switch Node version by using `nvm use` (on Windows, use `nvm use v16.17.0`). If this is not installed, run `nvm install v16.17.0`.
+- Optional [NVM](https://github.com/nvm-sh/nvm): Switch Node version by using `nvm use` (on Windows, use `nvm use v18.16.1`). If this is not installed, run `nvm install v18.16.1`.
 
 #### Commands
 
@@ -69,7 +73,7 @@ You can set this up locally with the following steps:
 1. `npm ci`
 1. `npm run dev`
 
-Read more in the official documentation https://linkfree.io/docs/environments/local-development
+Read more in the official documentation https://linkfree.io/docs/environments/local-development#local-development
 
 ### Local development with Docker Compose
 
@@ -77,22 +81,37 @@ This will allow you to run your favourite IDE but not have to install any depend
 
 #### Prerequisites
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://github.com/docker/compose) V2.
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/) and [Docker Compose](https://github.com/docker/compose) V2. or [Docker Desktop](https://docs.docker.com/desktop/#:~:text=Docker%20Desktop%20is%20a%20one,share%20containerized%20applications%20and%20microservices)
 
 #### Commands
 
-1. `docker compose up` 
+1. `git clone https://github.com/EddieHubCommunity/LinkFree`
 
-Read more in the official documentation - https://linkfree.io/docs/environments/local-development-docker-compose
+2. `cd LinkFree`
 
-### 🙂 How to add YOUR Profile
+3. `docker compose up` 
 
-Step by step quickstart guide can be found in the full docs here - https://linkfree.io/docs/quickstart
+4. In your browser on localhost:3000 you should now see the project up and running.
+
+5. Now you need to upload the data in your mongoDB instance. `localhost:3000/api/system/reload?secret=development`
+
+6. Recheck localhost:3000 to confirm data is uploaded, you should see current amount of active users. 
+
+> **Note**
+> If you wanna look at the database, you can use [MongoDB Compass](https://www.mongodb.com/products/compass) with connection string as `mongodb://localhost:27017/linkfree`
+
+Read more in the official documentation - https://linkfree.io/docs/environments/local-development#docker-compose
+
+### How to add YOUR Profile
+
+Step by step quickstart guide can be found in the full docs here
+- With JSON https://linkfree.io/docs/quickstart-json
+- With Forms https://linkfree.io/docs/quickstart-forms
 
 <!-- Testimonials STARTs Here -->
 
-## ⛩️ Testimonials
+## Testimonials
 
 Here are some testimonials from individuals who have used LinkFree:- 
 
@@ -135,21 +154,24 @@ Here are some testimonials from individuals who have used LinkFree:-
 > "LinkFree is very close to me because I have seen it evolve. With LinkFree, I have discovered so many amazing people in tech. Some of my favorite features are the barcode for profiles and testimonials. If you are reading this and don't have a profile, I highly recommend doing that. Thank you, Eddie and EddieHub community, for building this incredible app."
 
 - **Name :** Pradumna Saraf
-- **Bio :** Open Source Advocate | DevOps Engineer | EddieHub Ambassador
+- **Bio :** Open Source | DevOps | Golang Developer | EddieHub Ambassador
 - **Username :** <strong><a href="https://linkfree.io/Pradumnasaraf">Pradumna Saraf</a></strong>
 
 <!-- Testimonials ENDs Here -->
 
-## 🛡️ License
+## GitHub Accelerator
 
-LinkFree is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+LinkFree was accepted into the GitHub Accelerator program...
+![GitHub Accelerator](https://user-images.githubusercontent.com/624760/235968674-01cc3149-f9c3-48e2-9dc5-677789de8456.png)
+https://accelerator.github.com
 
-## 🧰 Contributing
-
-- Contributions make the open source community an amazing place to _learn_, _inspire_, and _create_.
-- Any contributions you make are **truly appreciated**.
-- Let's continue contributing to keep the community _active_ and _growing_.
-
-## 🙏 Support
+## Support
 
 Don't forget to leave a star ⭐️.
+
+## Our Pledge
+
+We take participation in our community as a harassment-free experience for everyone and we pledge to act in ways to contribute to an open, welcoming, diverse and inclusive community.  
+
+If you have experienced or been made aware of unacceptable behaviour, please remember that you can report this.  Read our [Code of Conduct](https://github.com/EddieHubCommunity/LinkFree/blob/main/CODE_OF_CONDUCT.md) for more details.
+
